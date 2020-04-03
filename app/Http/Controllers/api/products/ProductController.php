@@ -5,9 +5,11 @@ namespace App\Http\Controllers\api\products;
 use App\Http\Requests\api\User\UserRequest;
 use App\Http\Requests\api\User\UserSearchRequest;
 use App\Http\Resources\api\ProductResource;
+use App\Shop\Categories\Category;
 use App\Shop\Products\Product;
 use App\Shop\Products\Repositories\ProductRepository;
 use App\Shop\Products\Transformations\ProductTransformable;
+use FontLib\Table\Type\name;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -50,7 +52,15 @@ class ProductController extends Controller
 
         return $this->productRepo->paginateArrayResults($products->all(), 10);
 
-
+    }
+    public function categories(){
+        $categories = Category::all();
+        $arr=array();
+        foreach ($categories as $category){
+            $arr['name'][] = $category->name;
+            $arr['desc'][] = $category->description;
+        }
+        return $arr;
     }
 
 }

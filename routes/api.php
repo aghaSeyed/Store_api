@@ -22,7 +22,7 @@ Route::group(['namespace'=>'api'], function (){
 
     Route::group(['prefix' => 'user'], function (){
         Route::group(['namespace' => 'User'], function (){
-            Route::post('register' , 'RegisterController@register');
+            Route::post('register' , 'LoginController@register');
             Route::post('login' , 'LoginController@login');
                 Route::get('logout' , 'LoginController@logout');
                 Route::get('getUserData' , 'LoginController@getUserData');
@@ -35,6 +35,7 @@ Route::group(['namespace'=>'api'], function (){
         Route::group(['namespace' => 'products'], function (){
             Route::get('latest' , 'ProductController@latest');
             Route::get('search' , 'ProductController@search');
+            Route::get('categories' , 'ProductController@categories');
 
         });
     });
