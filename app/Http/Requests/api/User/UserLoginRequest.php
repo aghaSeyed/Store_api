@@ -30,7 +30,7 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|exists:customers',
+            'phone' => 'required|max:11|exists:customers,phone',
             'password' => 'required'
         ];
     }

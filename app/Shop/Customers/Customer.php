@@ -4,6 +4,7 @@ namespace App\Shop\Customers;
 
 use App\Shop\Addresses\Address;
 use App\Shop\Orders\Order;
+use App\Shop\VerifyPhone\Verify;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,11 +21,13 @@ class Customer extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'status'
+        'status',
+        'phone'
     ];
 
     /**
@@ -65,6 +68,13 @@ class Customer extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+/**
+ * @return \Illuminate\Database\Eloquent\Relations\HasOne
+ */
+    public function phone()
+    {
+        return $this->hasOne(Verify::class);
     }
 
     /**

@@ -34,6 +34,7 @@ class UserRegisterRequest extends FormRequest
             'name' => 'required|string',
             'password' => 'required|string|confirmed',
             'email' => 'required|unique:customers|email',
+            'phone' => 'required|string|unique:customers,phone'
         ];
     }
 }
