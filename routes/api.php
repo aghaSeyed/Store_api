@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 
 });
-Route::group(['namespace'=>'api'], function (){
+Route::group(['namespace'=>'api','middleware'=>'auth:api'], function (){
 
 
     Route::group(['prefix' => 'user'], function (){
@@ -26,8 +26,11 @@ Route::group(['namespace'=>'api'], function (){
             Route::post('verify' , 'LoginController@verify');
             Route::post('login' , 'LoginController@login');
             Route::get('logout' , 'LoginController@logout');
-            Route::get('getUserData' , 'LoginController@getUserData');
-
+            Route::apiResource('profile' , 'UserController');
+//            Route::get('getUserData' , 'LoginController@getUserData');
+            Route::group(['middleware'=>'auth:api'], function (){
+                Route::apiResource('cart' , 'cartController')->except('create');
+            });
 
         });
     });
@@ -44,12 +47,3 @@ Route::group(['namespace'=>'api'], function (){
         });
     });
 });
-
-
-
-//Route::group(['namespace'=>'api'], function () {
-//    Route::group(['namespace'=>'products'], function () {
-//        Route::post('latest' , 'ProductController@latest');
-//
-//    });
-//});

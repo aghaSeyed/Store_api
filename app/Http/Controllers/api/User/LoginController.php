@@ -34,6 +34,7 @@ class LoginController extends Controller
         $verify->token =mt_rand(1000, 9999);
         $verify->save();
         return response()->json([
+            'token for verify(For Testing)'=> $verify,
             'message' => 'Successfully created user!','status' => true,
         ], 200);
 
@@ -113,15 +114,7 @@ class LoginController extends Controller
      * should be complete => user order history addresses with api resource
      */
     public function getUserData(UserRequest $request){
-        if(auth('api')->check()){
-        $user = $request->user('api');
-        $addresses=$user->addresses()->where('status',1)->get();
-        return[
-            'name' => $user->name,
-            'email' => $user->email,
-            'addresses' => AddressResource::collection($addresses),
-        ];}
-        return ['status'=>false,'message'=>'user didnt login'];
+        //
     }
 
 

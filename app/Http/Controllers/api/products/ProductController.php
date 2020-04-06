@@ -77,7 +77,7 @@ class ProductController extends Controller
         $products = $repo->findProducts()->where('status', 1)->all();
 
         return response()->json([
-            'category' => CategoryResource::collection($category->get()),
+//            'category' => CategoryResource::collection($category->get()),
             'products' => ProductResource::collection($repo->paginateArrayResults($products, 10))
         ]);
 

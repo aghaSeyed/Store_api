@@ -155,7 +155,7 @@ return [
         Jsdecena\MailChimp\MailChimpServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
         Jsdecena\Baserepo\BaseRepositoryProvider::class,
-        \Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         /*
          * Application Service Providers...
