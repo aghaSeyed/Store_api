@@ -26,6 +26,7 @@ class Address extends Model
         'address_2',
         'zip',
         'city',
+        'latLong',
         'state_code',
         'province_id',
         'country_id',
